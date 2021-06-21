@@ -1,0 +1,215 @@
+:root {
+    --main-transition: 0.4s;
+    --main-text-shadow: 0 0 4px white;
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.page {
+    height: 100%;
+    background-color: black;
+    background-image: url("../img/cover.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.page-body {
+    min-height: 100%;
+    font-size: 18px;
+    font-family: "Myriad Pro", Arial, sans-serif;
+    color: white;
+}
+
+li {
+    list-style-type: none;
+}
+
+img {
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* безопасное скрытие элемента */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+/* ==================================== */
+/* =========== BESTIARY =============== */
+/* ==================================== */
+
+.bestiary {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 0 50px;
+    min-width: 700px;
+    max-width: 1400px;
+    margin: 20px auto;
+    padding: 0 50px;
+}
+
+.bestiary h1 {
+    grid-column: 1 / -1;
+    margin-bottom: 30px;
+    text-align: center;
+    color: white;
+    text-shadow: 3px 3px 3px black;
+}
+
+/* ==================================== */
+/* =============== TABS =============== */
+/* ==================================== */
+
+.bestiary__tabs {
+    max-width: 400px;
+}
+
+.bestiary__tabs h2 {
+    margin-bottom: 34px;
+    text-transform: uppercase;
+    text-shadow: var(--main-text-shadow)
+}
+
+.bestiary__list {
+    position: sticky;
+    top: 20px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.bestiary__list::before {
+    content: "";
+    position: absolute;
+    left: -15px;
+    width: 1px;
+    height: 100%;
+    background-image: linear-gradient(60deg, transparent 5%, white);
+}
+
+.bestiary__item {
+    display: flex;
+    align-items: center;
+    box-sizing: content-box;
+    min-width: 200px;
+    width: 350px;
+    max-width: 350px;
+    margin-bottom: 10px;
+    padding: 5px;
+    background-image: linear-gradient(60deg, gray, transparent);
+    transition: transform var(--main-transition);
+    will-change: transform;
+}
+
+.bestiary__avatar {
+    width: 100px;
+    height: 100px;
+    flex: none;
+    margin-right: 20px;
+    overflow: hidden;
+}
+
+.bestiary__item img {
+    width: inherit;
+    height: inherit;
+    transition: transform var(--main-transition);
+    will-change: transform;
+}
+
+.bestiary__item.is-active {
+    color: goldenrod;
+    box-shadow: 4px 4px 10px #262628;
+    transform: translateX(15px);
+}
+
+.bestiary__item:hover img {
+    transform: scale(1.2);
+}
+
+.bestiary__item.is-active img {
+    transform: scale(1.2);
+}
+
+/* ==================================== */
+/* ============ CONTENT =============== */
+/* ==================================== */
+
+.bestiary__content {
+    width: auto;
+}
+
+.bestiary__content-item {
+    display: none;
+}
+
+.bestiary__content-item.is-active {
+    display: block;
+}
+
+.bestiary__content-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.bestiary__content-item h3 {
+    position: relative;
+    padding: 10px 0;
+    margin-bottom: 22px;
+    text-align: right;
+    text-shadow: var(--main-text-shadow);
+}
+
+.bestiary__content-item h3::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(60deg, transparent 5%, white);
+}
+
+.bestiary__content-item img {
+    float: left;
+    width: 100%;
+    max-width: 400px;
+    margin-right: 20px;
+}
+
+.bestiary__content-item p {
+    margin-bottom: 20px;
+    color: #ccc;
+    font-family: cursive;
+    text-shadow: 1px 1px 10px black;
+}
+
+.bestiary__content-item i {
+    display: block;
+    font-size: 16px;
+    color: gray;
+}
+
+@media (max-width: 1000px) {
+    .bestiary__content-item img {
+        float: none;
+    }
+}
+
+
+
