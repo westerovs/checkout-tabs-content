@@ -15,8 +15,8 @@
 const tabItems = document.querySelectorAll('.tab-item')
 const contentItems = document.querySelectorAll('.content-item')
 
-const clearActiveClass = (element, className = 'is-active') => {
-    element.forEach(item => item.classList.remove(`${ className }`))
+const findClearActiveClass = (elements, className = 'is-active') => {
+    Array.from(elements).find(item => item.classList.remove(`${ className }`))
 }
 
 const setActiveClass = (element, index, className = 'is-active') => {
@@ -28,9 +28,9 @@ const checkoutTabs = (item, index) => {
         if (item.classList.contains('is-active')) return
         
         const currentItem = index
-        
-        clearActiveClass(tabItems)
-        clearActiveClass(contentItems)
+    
+        findClearActiveClass(tabItems)
+        findClearActiveClass(contentItems)
         
         setActiveClass(tabItems, currentItem)
         setActiveClass(contentItems, currentItem)
