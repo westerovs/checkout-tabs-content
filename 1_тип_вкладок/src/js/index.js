@@ -12,29 +12,29 @@
             для этого напишем функцию установки активного класса
 */
 
-const tabItems = document.querySelectorAll('.bestiary__item')
-const contentItems = document.querySelectorAll('.bestiary__content-item')
+const tabItems = Array.from(document.querySelectorAll('.tab-item'))
+const contentItems = Array.from(document.querySelectorAll('.content-item'))
 
 const clearActiveClass = (element, className = 'is-active') => {
-    element.forEach(item => item.classList.remove(`${ className }`))
+  element.find(item => item.classList.remove(`${ className }`))
 }
 
 const setActiveClass = (element, index, className = 'is-active') => {
-    element[index].classList.add(`${ className }`)
+  element[index].classList.add(`${ className }`)
 }
 
 const checkoutTabs = (item, index) => {
-    item.addEventListener('click', () => {
-        if (item.classList.contains('is-active')) return
-        
-        const currentItem = index
-        
-        clearActiveClass(tabItems)
-        clearActiveClass(contentItems)
-        
-        setActiveClass(tabItems, currentItem)
-        setActiveClass(contentItems, currentItem)
-    })
+  item.addEventListener('click', () => {
+    
+    if (item.classList.contains('is-active')) return
+    console.log(item)
+  
+    clearActiveClass(tabItems)
+    clearActiveClass(contentItems)
+    
+    setActiveClass(tabItems, index)
+    setActiveClass(contentItems, index)
+  })
 }
 
 tabItems.forEach(checkoutTabs)

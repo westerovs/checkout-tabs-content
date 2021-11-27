@@ -12,29 +12,29 @@
             для этого напишем функцию установки активного класса
 */
 
-const tabItems = document.querySelectorAll('.tab-item')
-const contentItems = document.querySelectorAll('.content-item')
+const tabItems = Array.from(document.querySelectorAll('.tab-item'))
+const contentItems = Array.from(document.querySelectorAll('.content-item'))
 
-const findClearActiveClass = (elements, className = 'is-active') => {
-    Array.from(elements).find(item => item.classList.remove(`${ className }`))
+const clearActiveClass = (element, className = 'is-active') => {
+  element.find(item => item.classList.remove(`${ className }`))
 }
 
 const setActiveClass = (element, index, className = 'is-active') => {
-    element[index].classList.add(`${ className }`)
+  element[index].classList.add(`${ className }`)
 }
 
 const checkoutTabs = (item, index) => {
-    item.addEventListener('click', () => {
-        if (item.classList.contains('is-active')) return
-        
-        const currentItem = index
+  item.addEventListener('click', () => {
     
-        findClearActiveClass(tabItems)
-        findClearActiveClass(contentItems)
-        
-        setActiveClass(tabItems, currentItem)
-        setActiveClass(contentItems, currentItem)
-    })
+    if (item.classList.contains('is-active')) return
+    console.log(item)
+  
+    clearActiveClass(tabItems)
+    clearActiveClass(contentItems)
+    
+    setActiveClass(tabItems, index)
+    setActiveClass(contentItems, index)
+  })
 }
 
 tabItems.forEach(checkoutTabs)
